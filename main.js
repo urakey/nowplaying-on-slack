@@ -11,7 +11,7 @@ const lastfm = new LastFmNode({
   secret:  secret,
 });
 
-const app     = electron.app;
+const app = electron.app;
 
 const sendToSlack = (message) => {
   request({
@@ -20,7 +20,7 @@ const sendToSlack = (message) => {
     form: {
       token,
       profile: JSON.stringify({
-        status_text:  message,
+        status_text:   message,
         status_emoji: ':musical_note:',
       }),
     },
@@ -43,7 +43,19 @@ const watchLastfm = () => {
 
 app.on('ready', () => {
   if (!token) {
-    console.log('token ga naiyo');
+    console.log('Slack Token ga naiyo');
+    return;
+  }
+  if (!apikey) {
+    console.log('Last.fm の API key ga naiyo');
+    return;
+  }
+  if (!secret) {
+    console.log('Last.fm の Shared secret ga naiyo');
+    return;
+  }
+  if (!user) {
+    console.log('Last.fm の Username ga naiyo');
     return;
   }
 
