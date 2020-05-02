@@ -3,15 +3,12 @@ const apikey  = process.env.LASTFM_API_KEY;
 const secret  = process.env.LASTFM_SHARED_SECRET;
 const user    = process.env.LASTFM_USER_NAME;
 
-const electron   = require('electron');
 const request    = require('request');
 const LastFmNode = require('lastfm').LastFmNode;
 const lastfm = new LastFmNode({
   api_key: apikey,
   secret:  secret,
 });
-
-const app = electron.app;
 
 const sendToSlack = (message) => {
   request({
@@ -41,23 +38,11 @@ const watchLastfm = () => {
   trackStream.start();
 };
 
-app.on('ready', () => {
-  if (!token) {
-    console.log('Slack Token ga naiyo');
+const start = () => {
+  if (!token || !apikey || !secret || !user) {
     return;
   }
-  if (!apikey) {
-    console.log('Last.fm の API key ga naiyo');
-    return;
-  }
-  if (!secret) {
-    console.log('Last.fm の Shared secret ga naiyo');
-    return;
-  }
-  if (!user) {
-    console.log('Last.fm の Username ga naiyo');
-    return;
-  }
-
   watchLastfm();
-});
+};
+
+start();

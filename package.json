@@ -1,22 +1,24 @@
 {
   "name": "nowplaying-on-slack",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "Nowplaying on Slack w/Last.fm",
+  "main": "app.js",
   "dependencies": {
-    "electron": "^1.7.5",
     "lastfm": "^0.9.3",
-    "request": "^2.81.0"
+    "request": "^2.88.1"
   },
   "devDependencies": {
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0"
-  }
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:urakey/nowplaying-on-slack.git"
+  },
+  "author": "Aki Fukayama [akey]",
+  "license": "ISC"
 }
